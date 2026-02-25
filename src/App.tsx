@@ -870,10 +870,28 @@ export default function App() {
       <div className="h-14 bg-[#17171a]/95 backdrop-blur-md border-b border-[#2a2a30] flex items-center justify-between px-4 select-none sticky top-0 z-50">
         <div className="flex items-center gap-4 w-1/3">
           {/* macOS Traffic Lights */}
-          <div className="flex items-center gap-2 mr-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] shadow-sm"></div>
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] shadow-sm"></div>
-            <div className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29] shadow-sm"></div>
+          <div className="flex items-center gap-2 mr-2 group">
+            <button 
+              onClick={() => setActiveDoc(null)}
+              className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] border border-[#e0443e] shadow-sm flex items-center justify-center text-black/60 hover:text-black transition-colors"
+              title="Close Document"
+            >
+              <X size={8} strokeWidth={3} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+            <button 
+              onClick={() => document.execCommand('undo')}
+              className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] border border-[#dea123] shadow-sm flex items-center justify-center text-black/60 hover:text-black transition-colors"
+              title="Undo"
+            >
+              <Undo size={8} strokeWidth={3} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+            <button 
+              onClick={() => document.execCommand('redo')}
+              className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border border-[#1aab29] shadow-sm flex items-center justify-center text-black/60 hover:text-black transition-colors"
+              title="Redo"
+            >
+              <Redo size={8} strokeWidth={3} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
           </div>
           
           {activeDoc ? (
